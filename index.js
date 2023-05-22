@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var xlsx = require("xlsx");
+var fs = require("fs");
+var filePath = './pbm.xlsx';
+var jsonFilePath = './pbm.json';
+var file = xlsx.readFile(filePath);
+var worksheet = file.Sheets[file.SheetNames[0]];
+var jsonData = xlsx.utils.sheet_to_json(worksheet);
+fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData));
+console.log('Convert Successfully!!!');
